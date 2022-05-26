@@ -4,12 +4,16 @@ const cors = require('cors');
 const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const routes = require('./routes');
+const { environment } = require('./config');
 
 const app = express();
+const isProduction = environment === 'production';
 
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
+app.use(routes);
 
 // Security Middleware
 if (!isProduction) {
@@ -34,3 +38,5 @@ app.use(
 		},
 	})
 );
+
+module.exports = app;
