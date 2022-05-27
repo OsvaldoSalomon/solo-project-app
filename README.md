@@ -1,1 +1,3 @@
-# react-redux-solo-project
+# kuora-app
+
+Welcome to Kuora
